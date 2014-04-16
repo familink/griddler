@@ -60,9 +60,9 @@ module Griddler
     end
 
     def text_or_sanitized_html
-      if params.key? :text
+      if params.key? :text and params[:text].present?
         clean_text(params[:text])
-      elsif params.key? :html
+      elsif params.key? :html and params[:html].present?
         clean_html(params[:html])
       else
         raise Errors::EmailBodyNotFound
